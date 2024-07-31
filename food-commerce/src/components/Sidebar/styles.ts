@@ -153,5 +153,5 @@ export const Container = styled.aside<ContainerProps>`
       }
     }
   }
+  `
   //End Configuração mobile
-`
