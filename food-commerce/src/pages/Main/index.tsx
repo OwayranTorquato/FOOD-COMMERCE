@@ -11,8 +11,8 @@ export default function Main() {
     <Container>
       <Sidebar />
       <section>
-        <img src={logoImg}/>
-        <Outlet/>
+        <img src={logoImg} />
+        <Outlet />
       </section>
     </Container>
   )

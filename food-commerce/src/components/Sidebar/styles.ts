@@ -4,12 +4,9 @@ interface ContainerProps {
   isMenuOpen: boolean
 }
 
-//Também posso fazer da seguinte forma, utilizando uma desestruturação
-//theme=>theme.colors.red, incluindo uma chave dentro do parenteses({theme})
 export const Container = styled.aside<ContainerProps>`
   background-color: ${({ theme }) => theme.colors.red};
 
-  //Function abre menu
   ${({ isMenuOpen }) =>
     isMenuOpen
       ? css`
@@ -18,10 +15,6 @@ export const Container = styled.aside<ContainerProps>`
       : css`
           width: 7.75rem;
         `}
-  //End Function abre menu     
-
-//Comportamento de fluidez do menu
-  transition: width 0.3s; 
 
   padding: 2rem 0;
   overflow: hidden;
@@ -30,15 +23,14 @@ export const Container = styled.aside<ContainerProps>`
   flex-direction: column;
   align-items: center;
 
-  //Botão menu
+  transition: width 0.3s;
+
   button {
     background: none;
     width: 100%;
     border: none;
   }
-  //End botão menu
 
-  //Nav-itens menu
   nav {
     flex: 1;
     width: 100%;
@@ -75,7 +67,7 @@ export const Container = styled.aside<ContainerProps>`
           font-weight: 500;
           transition: color 0.3s;
         }
-        // o & comercial aplica o efeito abaixo a classe pai, no caso <a>
+
         &.active {
           &::after {
             content: '';
@@ -103,9 +95,7 @@ export const Container = styled.aside<ContainerProps>`
       }
     }
   }
-  //End Nav-itens
 
-  //Configuração para mobile
   @media (max-width: 720px) {
     position: fixed;
     left: 0;
@@ -115,8 +105,8 @@ export const Container = styled.aside<ContainerProps>`
 
     width: 100%;
     height: 5rem;
-    padding: 0 0;
     overflow-y: auto;
+    padding: 0 0;
 
     button {
       display: none;
@@ -153,5 +143,4 @@ export const Container = styled.aside<ContainerProps>`
       }
     }
   }
-  `
-  //End Configuração mobile
+`

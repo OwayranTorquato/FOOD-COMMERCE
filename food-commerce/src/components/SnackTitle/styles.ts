@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { theme } from '../../styles/Theme'
 
-//Config dos Títulos da página
 export const Title = styled.h1`
   display: flex;
   align-items: center;
@@ -22,7 +20,6 @@ export const Title = styled.h1`
     border-radius: 4px;
   }
 
-  //Ajuste abaixo de 720px
   @media (max-width: 720px) {
     font-size: ${({ theme }) => theme.fontSize['3xl']};
     justify-content: center;

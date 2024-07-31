@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-
 import { Container } from './styles'
 
 import { ReactComponent as BurgerIcon } from '../../assets/burger.svg'
@@ -12,13 +11,11 @@ import { ReactComponent as IceCreamIcon } from '../../assets/ice-cream.svg'
 import menuImg from '../../assets/menu.svg'
 
 export function Sidebar() {
-    const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
-    //Function abre e fecha menu
-    const handleToggleMenu = () => {
-        //Operador !, faz a inversão dos valores, se True => False, propriedade do useState
-        setMenuOpen(!menuOpen)
-    }
+  const handleToggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
 
   return (
     <Container isMenuOpen={menuOpen}>
