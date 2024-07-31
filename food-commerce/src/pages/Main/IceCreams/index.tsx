@@ -1,3 +1,5 @@
+import { Head } from "../../../components/Head"
+
 export default function IceCreams() {
-  return <h1>Sorvetes</h1>
+  return <Head title='Sorvetes' description="Nossos melhores sorvetes"/>
 }

@@ -1,3 +1,5 @@
+import { Head } from "../../../components/Head"
+
 export default function Pizzas() {
-  return <h1>Pizzas</h1>
+  return <Head title='Pizzas' description="Nossas melhores pizzas"/>
 }
