@@ -2,7 +2,7 @@ export interface SnackData {
   id: number
   snack: string
   name: string
-  description: string //colocar "?" para que a propriedade seja opcional na obtenção de dados
+  description: string
   image: string
   price: number
 }

@@ -1,7 +1,6 @@
-export function currencyFormat(currency:number){
-return new Intl.NumberFormat('pt-BR', {
+export function currencyFormat(currency: number) {
+  return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
-    currency: 'BRL'
-}).format(currency)
+    currency: 'BRL',
+  }).format(currency)
 }
-//Formatação para Real Brasileiro

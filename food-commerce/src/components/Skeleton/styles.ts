@@ -3,18 +3,18 @@ import styled, { css, keyframes } from 'styled-components'
 import { SkeletonProps } from '.'
 
 const shimmerEffect = keyframes`
-    0%{
-        background-position: 0;
-    }
-    50%{
-        background-position: -50%;
-    }
-    75%{
-        background-position: -125%;
-    }
-    100%{
-        background-position: -200%;
-    }
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: -50%;
+  }
+  75% {
+    background-position: -125%;
+  }
+  100% {
+    background-position: -200%;
+  }
 `
 
 export const SkeletonElement = styled.div<SkeletonProps>`
@@ -36,7 +36,8 @@ export const SkeletonElement = styled.div<SkeletonProps>`
       height: 32px;
       margin: 0.5rem 0;
     `}
-    ${({ type }) =>
+
+  ${({ type }) =>
     type === 'text' &&
     css`
       width: 100%;
@@ -44,7 +45,7 @@ export const SkeletonElement = styled.div<SkeletonProps>`
       margin: 0.25rem 0;
     `}
 
-    ${({ type }) =>
+  ${({ type }) =>
     type === 'image' &&
     css`
       width: 200px;
@@ -53,7 +54,7 @@ export const SkeletonElement = styled.div<SkeletonProps>`
       border-radius: 50%;
     `}
 
-    ${({ type }) =>
+  ${({ type }) =>
     type === 'thumbnail' &&
     css`
       width: 100%;
