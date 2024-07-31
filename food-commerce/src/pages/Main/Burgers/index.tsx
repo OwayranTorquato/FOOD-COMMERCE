@@ -6,13 +6,12 @@ import { Snacks } from '../../../components/Snacks'
 import { getBurgers } from '../../../services/api'
 
 export default function Burgers() {
-
   const [burgers, setBurgers] = useState([])
 
-  useEffect(()=> {
-    (async ()=>{
+  useEffect(() => {
+    ;(async () => {
       const burgerRequest = await getBurgers()
-      
+
       setBurgers(burgerRequest.data)
     })()
   }, [])
