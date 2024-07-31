@@ -5,6 +5,7 @@ export const Container = styled.main`
   min-height: 100vh;
   display: flex;
 
+  //Configuração de Section
   > section {
     flex: 1;
     width: 100%;
@@ -12,11 +13,13 @@ export const Container = styled.main`
     overflow-y: auto;
     padding: 2rem 1.875rem;
 
+    //Configuração do logotipo dentro da Section
     img {
       width: 10rem;
       margin-bottom: 2rem;
     }
-
+    
+    //Comportamento responsivo do logotipo para mobile
     @media (max-width: 720px) {
       display: flex;
       flex-direction: column;
@@ -26,5 +29,6 @@ export const Container = styled.main`
         align-self: center;
       }
     }
+    //End comportamento
   }
 `
