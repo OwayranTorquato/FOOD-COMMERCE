@@ -2,16 +2,18 @@ import { FiPlus } from 'react-icons/fi'
 
 import { Container } from './styles'
 import { currencyFormat } from '../../helpers/currencyFormat'
+import { SkeletonSnack } from './SkeletonSnack'
+import { SnackData } from '../../interfaces/SnackData'
 
 interface SnacksProps {
-  snacks: any[]
+  snacks: SnackData[]
 }
 
 export function Snacks({ snacks }: SnacksProps) {
   return (
     <Container>
       {!snacks.length ? (
-        <p style={{color:'#fff'}}>Loading...</p>
+        [1,2,3,4].map((n) => <SkeletonSnack key= {n}/>)
       ) : (
         snacks.map((snack) => (
           <div key={snack.id} className='snack'>
