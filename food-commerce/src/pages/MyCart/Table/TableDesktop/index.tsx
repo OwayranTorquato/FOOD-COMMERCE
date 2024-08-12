@@ -1,3 +1,4 @@
+import { FaTrashAlt } from 'react-icons/fa'
 import { useCart } from '../../../../hooks/UseCart'
 
 import { currencyFormat } from '../../../../helpers/currencyFormat'
@@ -9,7 +10,7 @@ import plusImg from '../../../../assets/circle-plus.svg'
 import minusImg from '../../../../assets/circle-minus.svg'
 
 export function TableDesktop() {
-  const { cart } = useCart()
+  const { cart, removeSnackFromCart } = useCart()
   return (
     <Container>
       <table>
@@ -46,7 +47,11 @@ export function TableDesktop() {
               <td>
                 <h5>{currencyFormat(item.subtotal)}</h5>
               </td>
-              <td>Deletar</td>
+              <td>
+                <button type='button' onClick={()=> removeSnackFromCart(item)}>
+                <FaTrashAlt />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

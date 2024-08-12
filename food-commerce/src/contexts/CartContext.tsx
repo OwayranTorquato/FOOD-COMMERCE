@@ -24,7 +24,11 @@ interface UpdateCartProps {
 interface CartContextProps {
   cart: Snack[]
   addSnackIntoCart: (snack: SnackData) => void
-  // removeSnackFromCart: ({ id, snack }: RemoveSnackFromCart) => void
+  removeSnackFromCart: (snack: Snack) => void
+  snackCartIncrement: (snack: Snack) => void
+  snackCartDecrement: (snack: Snack) => void
+  confirmOrder: () => void
+
   // updateCart: ({ id, snack, newQuantity }: UpdateCartProps) => void
 }
 
@@ -58,17 +62,52 @@ export function CartProvider({ children }: CartProviderProps) {
 
       toast.success(`Outro(a) ${snackEmoji(snack.snack)} ${snack.name} adicionado nos pedidos.`)
       setCart(newCart)
-      
+
       return
     }
-    
+
     // adicionar
     const newSnack = { ...snack, quantity: 1, subtotal: snack.price }
     const newCart = [...cart, newSnack] // push de um array
-    
+
     toast.success(` ${snackEmoji(snack.snack)} ${snack.name} adicionado nos pedidos.`)
     setCart(newCart)
   }
 
-  return <CartContext.Provider value={{ cart, addSnackIntoCart }}>{children}</CartContext.Provider>
+  function removeSnackFromCart(snack: Snack) {
+    const newCart = cart.filter((item) => !(item.id === snack.id && item.snack === snack.snack))
+
+    setCart(newCart)
+  }
+
+  function updateSnackQuantity(snack: Snack, newQuantity: number) {
+    return
+  }
+
+  function snackCartIncrement(snack: Snack) {
+    updateSnackQuantity(snack, snack.quantity + 1)
+  }
+
+  function snackCartDecrement(snack: Snack) {
+    updateSnackQuantity(snack, snack.quantity - 1)
+  }
+
+  function confirmOrder() {
+    return
+  }
+
+  return (
+    <CartContext.Provider
+      value={{
+        cart,
+        addSnackIntoCart,
+        removeSnackFromCart,
+        snackCartIncrement,
+        snackCartDecrement,
+        confirmOrder,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  )
 }
