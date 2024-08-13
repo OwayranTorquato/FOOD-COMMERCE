@@ -12,6 +12,7 @@ export const Container = styled.main`
 
     th {
       padding: 0 1rem 0.5rem 1rem;
+
       font-weight: 500;
       font-size: 1.125rem;
       text-transform: uppercase;
@@ -38,12 +39,12 @@ export const Container = styled.main`
         font-size: 1.5rem;
       }
 
-      div{
-        display:flex;
+      div {
+        display: flex;
         align-items: center;
         gap: 0.5rem;
 
-        button{
+        button {
           background: none;
           flex: 0;
           border: none;
@@ -52,13 +53,13 @@ export const Container = styled.main`
           align-items: center;
           justify-content: center;
 
-          img{
+          img {
             width: 1.25rem;
           }
         }
       }
 
-      h5{
+      h5 {
         font-weight: 700;
         font-size: 1.5rem;
       }
@@ -68,24 +69,24 @@ export const Container = styled.main`
         padding-left: 0;
         padding-right: 0;
 
-        img{
-            object-fit: cover;
-            width: 7.5rem;
-            height: 7.5rem;
-            border-radius: 8px;
+        img {
+          object-fit: cover;
+          width: 7.5rem;
+          height: 7.5rem;
+          border-radius: 8px;
         }
       }
 
-      &:nth-child(2){
+      &:nth-child(2) {
         padding-left: 2rem;
       }
 
       &:nth-child(3),
-      &:nth-child(4){
+      &:nth-child(4) {
         width: 11rem;
       }
 
-      &:last-child{
+      &:last-child {
         width: 1.5rem;
         padding-right: 0;
 
@@ -98,8 +99,8 @@ export const Container = styled.main`
           align-items: center;
           justify-content: flex-end;
 
-          svg{
-            fill: ${({theme})=> theme.colors.yellow};
+          svg {
+            fill: ${({ theme }) => theme.colors.yellow};
             width: 1.5rem;
             height: 1.5rem;
           }

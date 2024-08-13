@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext } from 'react'
 
-import { SnackContext } from "../contexts/SnackContext";
+import { SnackContext } from '../contexts/SnackContext'
 
-export function useSnack(){
-    return useContext(SnackContext)
+export function useSnack() {
+  return useContext(SnackContext)
 }

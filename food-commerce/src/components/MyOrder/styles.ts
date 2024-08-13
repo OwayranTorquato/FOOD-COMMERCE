@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import { darken } from 'polished'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 export const Container = styled(Link)`
   position: absolute;
@@ -39,12 +39,12 @@ export const Container = styled(Link)`
     color: ${({ theme }) => theme.colors.yellow};
   }
 
-  @media (max-width: 720px){
-    top: 0%.5rem;
+  @media (max-width: 720px) {
+    top: 0.5rem;
     bottom: initial;
 
-    span:first-child{
-        display: none;
+    span:first-child {
+      display: none;
     }
   }
 `

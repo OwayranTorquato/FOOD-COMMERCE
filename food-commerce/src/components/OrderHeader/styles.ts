@@ -14,6 +14,7 @@ export const Container = styled.header`
   > div {
     background: none;
     border: none;
+
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -29,11 +30,11 @@ export const Container = styled.header`
 
       span {
         color: ${({ theme }) => theme.colors.yellow};
-      }
 
-      strong {
-        font-weight: 500;
-        font-size: 1.25rem;
+        strong {
+          font-weight: 500;
+          font-size: 1.25rem;
+        }
       }
     }
 
