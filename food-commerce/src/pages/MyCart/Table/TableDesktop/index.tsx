@@ -10,7 +10,7 @@ import plusImg from '../../../../assets/circle-plus.svg'
 import minusImg from '../../../../assets/circle-minus.svg'
 
 export function TableDesktop() {
-  const { cart, removeSnackFromCart } = useCart()
+  const { cart, removeSnackFromCart, snackCartIncrement, snackCartDecrement } = useCart()
   return (
     <Container>
       <table>
@@ -35,11 +35,11 @@ export function TableDesktop() {
               </td>
               <td>
                 <div>
-                  <button type='button' onClick={() => console.log(`decrementar snack`, item)}>
+                  <button type='button' onClick={() => snackCartDecrement(item)}>
                     <img src={minusImg} alt='Remover quantidade' />
                   </button>
                   <span>{`${item.quantity}`.padStart(2, '0')}</span>
-                  <button type='button' onClick={() => console.log(`incrementar snack`, item)}>
+                  <button type='button' onClick={() => snackCartIncrement(item)}>
                     <img src={plusImg} alt='Adicionar quantidade' />
                   </button>
                 </div>
@@ -48,8 +48,8 @@ export function TableDesktop() {
                 <h5>{currencyFormat(item.subtotal)}</h5>
               </td>
               <td>
-                <button type='button' onClick={()=> removeSnackFromCart(item)}>
-                <FaTrashAlt />
+                <button type='button' onClick={() => removeSnackFromCart(item)}>
+                  <FaTrashAlt />
                 </button>
               </td>
             </tr>
