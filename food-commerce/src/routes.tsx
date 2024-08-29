@@ -9,6 +9,7 @@ import PizzasPage from './pages/Main/Pizzas'
 import MyCartPage from './pages/MyCart'
 import Payment from './pages/Payment'
 
+
 export function AppRoutes() {
   return (
     <Routes>
