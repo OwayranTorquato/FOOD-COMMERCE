@@ -9,9 +9,7 @@ type FieldValues = {
   fullName: string
   email: string
   mobile: string
-
 }
-
 
 export default function Payment() {
   const {
@@ -26,23 +24,29 @@ export default function Payment() {
       <Head title='Pagamento' />
       <OrderHeader />
       <Inner>
-        <Form onSubmit ={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <h4>Informações pessoais</h4>
 
           <div className='field'>
             <label htmlFor='fullName'>Nome completo</label>
-            <input type='text' id='fullName' autoComplete='name'{...register('fullName', {required: true})}/>
+            <input
+              type='text'
+              id='fullName'
+              autoComplete='name'
+              {...register('fullName', { required: true })}
+            />
+            {errors.fullName && <p className='error'> Campo obrigatório</p>}
           </div>
 
           <div className='grouped'>
             <div className='field'>
               <label htmlFor='email'>E-mail</label>
-              <input type='email' name='email' id='email' autoComplete='email' required/>
+              <input type='email' name='email' id='email' autoComplete='email' />
             </div>
 
             <div className='field'>
               <label htmlFor='mobile'>Celular</label>
-              <input type='tel' id='mobile' name='mobile' autoComplete='phone' required/>
+              <input type='tel' id='mobile' name='mobile' autoComplete='phone' />
             </div>
 
             <div className='field'>
@@ -169,7 +173,7 @@ export default function Payment() {
               />
             </div>
           </div>
-        <PayOrder />
+          <PayOrder />
         </Form>
       </Inner>
     </Container>

@@ -35,6 +35,10 @@ export const Form = styled.form`
   .field {
     flex-grow: 1;
     margin-bottom: 1rem;
+
+    p {
+      color: ${({ theme }) => theme.colors.red};
+    }
   }
 
   label {
@@ -60,7 +64,7 @@ export const Form = styled.form`
     padding: 0.7rem;
   }
 
-  @media(max-width: 540px) {
+  @media (max-width: 540px) {
     .grouped {
       flex-direction: column;
     }
