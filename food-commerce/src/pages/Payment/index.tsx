@@ -1,23 +1,31 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 import { Head } from '../../components/Head'
 import { PayOrder } from '../../components/OrderCloseAction/PayOrder'
 import { OrderHeader } from '../../components/OrderHeader'
 import { Container, Inner, Form } from './styles'
 
-type FieldValues = {
-  fullName: string
-  email: string
-  mobile: string
-}
+const schema = yup.object({
+  fullName:yup.string().required('Nome completo é obrigatório').min(12, 'Nome é muito curto'),
+  email:yup.string().email().required('Email é obrigatório'),
+  mobile: yup.string().required('Telefone é obrigatório'),
+  
+})
+.required()
+
+type FieldValues = yup.InferType<typeof schema>
 
 export default function Payment() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FieldValues>()
-  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data)
+  } = useForm<FieldValues>({
+    resolver:yupResolver(schema),
+  })
+  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log('data', data)
 
   return (
     <Container>
@@ -33,15 +41,18 @@ export default function Payment() {
               type='text'
               id='fullName'
               autoComplete='name'
-              {...register('fullName', { required: true })}
+              {...register('fullName')}
             />
-            {errors.fullName && <p className='error'> Campo obrigatório</p>}
+            {errors.fullName && <p className='error'> {errors.fullName.message}</p>}
           </div>
 
           <div className='grouped'>
             <div className='field'>
               <label htmlFor='email'>E-mail</label>
-              <input type='email' name='email' id='email' autoComplete='email' />
+              <input type='email' id='email' autoComplete='email' 
+              {...register('email')}
+              />
+              {errors.email && <p className='error'> {errors.email.message}</p>}
             </div>
 
             <div className='field'>
