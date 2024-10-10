@@ -1,29 +1,31 @@
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { IMaskInput } from 'react-imask'
 
 import { Head } from '../../components/Head'
 import { PayOrder } from '../../components/OrderCloseAction/PayOrder'
 import { OrderHeader } from '../../components/OrderHeader'
 import { Container, Inner, Form } from './styles'
 
-const schema = yup.object({
-  fullName:yup.string().required('Nome completo é obrigatório').min(12, 'Nome é muito curto'),
-  email:yup.string().email().required('Email é obrigatório'),
-  mobile: yup.string().required('Telefone é obrigatório'),
-  
-})
-.required()
+const schema = yup
+  .object({
+    fullName: yup.string().required('Nome completo é obrigatório').min(12, 'Nome é muito curto'),
+    email: yup.string().email().required('Email é obrigatório'),
+    mobile: yup.string().required('Telefone é obrigatório'),
+  })
+  .required()
 
 type FieldValues = yup.InferType<typeof schema>
 
 export default function Payment() {
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
-    resolver:yupResolver(schema),
+    resolver: yupResolver(schema),
   })
   const onSubmit: SubmitHandler<FieldValues> = (data) => console.log('data', data)
 
@@ -37,11 +39,12 @@ export default function Payment() {
 
           <div className='field'>
             <label htmlFor='fullName'>Nome completo</label>
-            <input
-              type='text'
-              id='fullName'
-              autoComplete='name'
-              {...register('fullName')}
+            <Controller
+              name='fullName'
+              control={control}
+              render={({ field }) => (
+                <input type='text' id='fullName' autoComplete='name' {...field} />
+              )}
             />
             {errors.fullName && <p className='error'> {errors.fullName.message}</p>}
           </div>
@@ -49,8 +52,12 @@ export default function Payment() {
           <div className='grouped'>
             <div className='field'>
               <label htmlFor='email'>E-mail</label>
-              <input type='email' id='email' autoComplete='email' 
-              {...register('email')}
+              <Controller
+                name='email'
+                control={control}
+                render={({ field }) => (
+                  <input type='text' id='email' autoComplete='name' {...field} />
+                )}
               />
               {errors.email && <p className='error'> {errors.email.message}</p>}
             </div>

@@ -9,7 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "esnext", // Mantém "esnext" para o projeto principal
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
