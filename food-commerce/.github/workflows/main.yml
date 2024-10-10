@@ -32,4 +32,4 @@ jobs:
       - name: Run tests
         run: |
           cd food-commerce
-          npm test
+          npm test 
