@@ -13,8 +13,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": true, // Pode ser testado se causar problemas
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx"
+  ]
 }
