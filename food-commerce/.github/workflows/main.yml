@@ -3,26 +3,33 @@ name: CI
 on:
   push:
     branches:
-      - main  # Ou a branch que você deseja monitorar
+      - main  # Certifique-se de usar a branch correta
   pull_request:
     branches:
-      - main  # Ou a branch que você deseja monitorar
+      - main  # Certifique-se de usar a branch correta
 
 jobs:
-  test: 
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checar o código
+      - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Configurar Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Use a versão do Node.js que você precisa
+          node-version: '16'  # Use a versão que você precisa
 
-      - name: Instalar dependências
-        run: npm install
+      - name: Change directory to food-commerce
+        run: cd food-commerce
 
-      - name: Executar testes
-        run: npm test
+      - name: Install dependencies
+        run: |
+          cd food-commerce
+          npm install
+
+      - name: Run tests
+        run: |
+          cd food-commerce
+          npm test
