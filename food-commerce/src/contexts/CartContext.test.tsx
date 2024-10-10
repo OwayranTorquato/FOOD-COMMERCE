@@ -79,7 +79,7 @@ describe('CartContext', () => {
     expect(result.current.cart.length).toBe(0);
   });
 
-  it('should navigate to payment on confirmOrder', () => {
+  it('should navigate to payment on confirmOrdetr', () => {
     const { result } = renderHook(() => React.useContext(CartContext), { wrapper });
 
     // Adicionar o snack ao carrinho antes de confirmar o pedido
