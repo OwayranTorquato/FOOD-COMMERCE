@@ -48,3 +48,46 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull r
 ## Licença
 
 Este projeto é licenciado sob a MIT License.
+
+
+# FOOD COMMERCE
+
+This is an online food ordering project that is under development. The goal of this project is to create a platform where users can place food orders in a simple and practical way.
+
+## How to run the project
+
+Follow the instructions below to run the project on your machine:
+
+### Clone the repository
+First, clone the repository to your local machine:
+
+git clone https://github.com/OwayranTorquato/FOOD-COMMERCE.git
+
+### Install the dependencies
+After cloning the repository, navigate to the project folder and install the necessary dependencies:
+
+cd FOOD-COMMERCE
+npm install
+
+### Create the .env file
+Create a .env file at the root of the project, following the example provided in the .env.example file. This file will contain the necessary environment variables to run the project correctly. Make sure to direct the API ports to ensure the project works on any machine.
+
+### Run the project
+To run the project, use the following commands:
+
+npm run start
+npm run json-server
+
+npm run start: Starts the application server.
+npm run json-server: Starts the JSON server to simulate an API.
+Make sure both commands are running correctly for the project to work.
+
+Also ensure the configured ports are available.
+
+## Project Status
+
+This project is still under development and does not yet include all its final features. However, it is already possible to see the basic structure and the initial functioning of the online ordering system.
+
+## Contribution
+
+Contributions are welcome! Feel free to open issues or pull requests if you have suggestions or improvements.
