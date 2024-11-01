@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@brazilian-utils/brazilian-utils": "^1.0.0-rc.12",
     "@hookform/resolvers": "^3.9.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/node": "^16.11.56",
@@ -25,7 +26,6 @@
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

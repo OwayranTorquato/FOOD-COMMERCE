@@ -1,27 +1,19 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+
 import { IMaskInput } from 'react-imask'
 
 import { Head } from '../../components/Head'
 import { PayOrder } from '../../components/OrderCloseAction/PayOrder'
 import { OrderHeader } from '../../components/OrderHeader'
+
+import { schema, FieldValues } from './validationSchema'
+
 import { Container, Inner, Form } from './styles'
-
-const schema = yup
-  .object({
-    fullName: yup.string().required('Nome completo é obrigatório').min(12, 'Nome é muito curto'),
-    email: yup.string().email().required('Email é obrigatório'),
-    mobile: yup.string().required('Telefone é obrigatório'),
-  })
-  .required()
-
-type FieldValues = yup.InferType<typeof schema>
 
 export default function Payment() {
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
@@ -56,7 +48,7 @@ export default function Payment() {
                 name='email'
                 control={control}
                 render={({ field }) => (
-                  <input type='text' id='email' autoComplete='name' {...field} />
+                  <input type='email' id='email' autoComplete='name' {...field} />
                 )}
               />
               {errors.email && <p className='error'> {errors.email.message}</p>}
@@ -69,11 +61,11 @@ export default function Payment() {
                 control={control}
                 render={({ field }) => (
                   <IMaskInput
-                  type='tel'
-                  id='mobile'
-                  autoComplete='phone'
-                  mask={'(00) 90000-0000'}
-                  {...field}
+                    type='tel'
+                    id='mobile'
+                    autoComplete='phone'
+                    mask={'(00) 90000-0000'}
+                    {...field}
                   />
                 )}
               />
@@ -82,54 +74,110 @@ export default function Payment() {
 
             <div className='field'>
               <label htmlFor='document'>CPF / CNPJ</label>
-              <input type='text' id='document' name='document' />
+              <Controller
+                name='document'
+                control={control}
+                render={({ field }) => (
+                  <IMaskInput
+                    type='text'
+                    id='document'
+                    mask={[
+                      { mask: '000.000.000-00', maxLength: 11 },
+                      { mask: '00.000.000/0000-00' },
+                    ]}
+                    {...field}
+                  />
+                )}
+              />
+              {errors.document && <p className='error'> {errors.document.message}</p>}
             </div>
           </div>
 
           <h4>Endereço de entrega</h4>
 
           <div className='field'>
-            <label htmlFor='zipcode'>CEP</label>
-            <input
-              type='text'
-              id='zipcode'
-              name='zipcode'
-              autoComplete='postal-code'
-              style={{ width: '120px' }}
+            <label htmlFor='zipCode'>CEP</label>
+            <Controller
+              name='zipCode'
+              control={control}
+              render={({ field }) => (
+                <IMaskInput
+                  type='text'
+                  id='zipCode'
+                  mask={'00000-000'}
+                  style={{width: '120px'}}
+                  {...field}
+                />
+              )}
             />
+            {errors.zipCode && <p className='error'> {errors.zipCode.message}</p>}
           </div>
 
           <div className='field'>
             <label htmlFor='street'>Endereço</label>
-            <input type='text' id='street' name='street' autoComplete='street-address' />
+            <Controller
+              name='street'
+              control={control}
+              render={({ field }) => <input type='text' id='street' {...field}/>
+              }
+            />
+            {errors.street && <p className='error'> {errors.street.message}</p>}
           </div>
 
           <div className='grouped'>
             <div className='field'>
               <label htmlFor='number'>Número</label>
-              <input type='text' id='numer' name='number' />
+              <Controller
+              name='number'
+              control={control}
+              render={({ field }) => <input type='text' id='number' {...field}/>
+              }
+            />
+            {errors.number && <p className='error'> {errors.number.message}</p>}
             </div>
 
             <div className='field'>
               <label htmlFor='complement'>Complemento</label>
-              <input type='text' id='complement' name='complement' />
+              <Controller
+              name='complement'
+              control={control}
+              render={({ field }) => <input type='text' id='complement' {...field}/>
+              }
+            />
+            {errors.complement && <p className='error'> {errors.complement.message}</p>}
             </div>
           </div>
 
           <div className='grouped'>
             <div className='field'>
               <label htmlFor='neighborhood'>Bairro</label>
-              <input type='text' id='neighborhood' name='neighborhood' />
+              <Controller
+              name='neighborhood'
+              control={control}
+              render={({ field }) => <input type='text' id='neighborhood' {...field}/>
+              }
+            />
+            {errors.neighborhood && <p className='error'> {errors.neighborhood.message}</p>}
             </div>
 
             <div className='field'>
               <label htmlFor='city'>Cidade</label>
-              <input type='text' id='city' name='city' />
+              <Controller
+              name='city'
+              control={control}
+              render={({ field }) => <input type='text' id='city' {...field}/>
+              }
+            />
+            {errors.city && <p className='error'> {errors.city.message}</p>}
             </div>
 
             <div className='field'>
               <label htmlFor='state'>Estado</label>
-              <select id='state' name='state'>
+              <Controller
+              name='state'
+              control={control}
+              render={({ field }) => (
+              <select id='state' {...field}>
                 <option value=''>Selecione</option>
                 <option value='AC'>Acre</option>
                 <option value='AL'>Alagoas</option>
@@ -158,6 +206,9 @@ export default function Payment() {
                 <option value='SE'>Sergipe</option>
                 <option value='TO'>Tocantins</option>
               </select>
+              )}
+              />
+              {errors.state && <p className='error'> {errors.state.message}</p>}
             </div>
           </div>
 
